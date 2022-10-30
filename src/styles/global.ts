@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 body {
     background: ${(props) => props.theme.backgroud};
     --webkit-font-smoothing: antialiased;
+    
 }
 
 body,input-security,textarea,button {
