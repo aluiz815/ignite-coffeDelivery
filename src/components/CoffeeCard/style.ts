@@ -63,47 +63,19 @@ export const CardCoffeeContainer = styled.div`
     white-space: nowrap;
   }
   margin-bottom: 1.5rem;
-
-  button {
-    border: 0;
-    background: ${(props) => props.theme['purple-dark']};
-    color: ${(props) => props.theme.white};
-    cursor: pointer;
-    width: 2.375rem;
-    height: 2.375rem;
-    border-radius: 6px;
-    padding: 0.5rem;
-    transition: background 0.2s;
-    &:hover {
-      background: ${(props) => props.theme.purple};
-    }
-  }
 `
-export const ProductActionContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+export const ShoppingCartButton = styled.button`
+  border: 0;
+  background: ${(props) => props.theme['purple-dark']};
+  color: ${(props) => props.theme.white};
+  cursor: pointer;
+  width: 2.375rem;
   height: 2.375rem;
-  padding: 0.875rem;
-  background: ${(props) => props.theme['base-button']};
   border-radius: 6px;
-
-  span {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    margin-bottom: 0px;
-    font-weight: 400;
-    padding: 0.25rem;
-    color: ${(props) => props.theme['base-title']};
-  }
-
-  button {
-    border: 0;
-    background: transparent;
-    color: ${(props) => props.theme.purple};
-    cursor: pointer;
-    &:hover {
-      background: transparent;
-    }
+  padding: 0.5rem;
+  transition: background 0.2s;
+  &:hover {
+    background: ${(props) => props.theme.purple};
   }
 `

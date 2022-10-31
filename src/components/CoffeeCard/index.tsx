@@ -2,11 +2,12 @@ import {
   CardCoffeeContainer,
   CoffeeCardContainer,
   CoffeeContentWrapper,
-  ProductActionContainer,
+  ShoppingCartButton,
 } from './style'
 
 import CoffeeImage from '../../assets/Capuccino.svg'
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
+import { ProductActionButton } from '../ProductActionButton'
 
 export const CoffeeCard = () => {
   return (
@@ -18,18 +19,10 @@ export const CoffeeCard = () => {
         <span>O tradicional café feito com água quente e grãos moídos</span>
         <CardCoffeeContainer>
           <span>R$ 9,90</span>
-          <ProductActionContainer>
-            <button>
-              <Minus size={14} weight="bold" />
-            </button>
-            <span>1</span>
-            <button>
-              <Plus size={14} weight="bold" />
-            </button>
-          </ProductActionContainer>
-          <button>
+          <ProductActionButton />
+          <ShoppingCartButton>
             <ShoppingCart size={22} weight="fill" />
-          </button>
+          </ShoppingCartButton>
         </CardCoffeeContainer>
       </CoffeeContentWrapper>
     </CoffeeCardContainer>
