@@ -33,15 +33,17 @@ position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
-  background: ${(props) => props.theme['yellow-light']};
-  border-radius: 6px;
-  color: ${(props) => props.theme['yellow-dark']};
-  cursor: pointer;
-
+ 
+ 
   a { 
-    
-    color:${(props) => props.theme['yellow-dark']};
+    padding: 0.5rem;
+    background: ${(props) => props.theme['yellow-light']};
+    border-radius: 6px;
+    color: ${(props) => props.theme['yellow-dark']};
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+
+
     span {
       display: flex;
       justify-content: center;
@@ -55,6 +57,11 @@ position: relative;
       height: 1.25rem;
       border-radius: 50%;
       border: 0;
+    }
+
+    &:hover {
+      background: ${(props) => props.theme['yellow-dark']};
+       color: ${(props) => props.theme.white};
     }
   }
 `

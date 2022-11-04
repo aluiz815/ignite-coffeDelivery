@@ -1,6 +1,6 @@
 import { Bank, CreditCard, MapPinLine, Money } from 'phosphor-react'
 import { useContext } from 'react'
-import { FormProvider, useForm, useFormContext } from 'react-hook-form'
+import { FormProvider, useForm  } from 'react-hook-form'
 import { CoffeeCardCheckout } from '../../components/CoffeeCardCheckout'
 import { CartContext } from '../../contexts/CartContext'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -30,7 +30,7 @@ const newOrderFormValidationSchema = zod.object({
   cep: zod.string().min(1).max(60),
   street: zod.string().min(1).max(60),
   number: zod.string().min(1).max(60),
-  complement: zod.string().min(1).max(60),
+  complement: zod.string().optional(),
   bairro: zod.string().min(1).max(60),
   city: zod.string().min(1).max(60),
   uf: zod.string().min(1).max(60),
@@ -47,7 +47,7 @@ export const Checkout = () => {
     resolver: zodResolver(newOrderFormValidationSchema)
   })
   
-  const { handleSubmit, reset, register, setValue } = newOrderForm
+  const { handleSubmit, reset, register, setValue, watch} = newOrderForm
 
 
   function handleCreateNewCycle(data: NewOrderFormData) {
@@ -55,6 +55,8 @@ export const Checkout = () => {
     reset()
     navigate('/success')
   }
+
+  const creditTypeSelected = watch('creditType')
 
   return (
     <CheckoutContainer onSubmit={handleSubmit(handleCreateNewCycle)}>
@@ -92,15 +94,15 @@ export const Checkout = () => {
             </CheckoutPaymentFormTitleTexts>
           </CheckoutPaymentFormTitle>
           <CheckoutPaymentType>
-            <CheckoutPaymentTypeWrapper type='button'  onClick={() => setValue('creditType', 'CARTÃO DE CRÉDITO')}>
+            <CheckoutPaymentTypeWrapper type='button' className={creditTypeSelected == 'CARTÃO DE CRÉDITO' ? 'selected' : ''}   onClick={() => setValue('creditType', 'CARTÃO DE CRÉDITO')}>
               <CreditCard size={16} />
               <p>CARTÃO DE CRÉDITO</p>
             </CheckoutPaymentTypeWrapper>
-            <CheckoutPaymentTypeWrapper type='button'  onClick={() => setValue('creditType', 'CARTÃO DE DÉBITO')}>
+            <CheckoutPaymentTypeWrapper type='button' className={creditTypeSelected == 'CARTÃO DE DÉBITO' ? 'selected' : ''}   onClick={() => setValue('creditType', 'CARTÃO DE DÉBITO')}>
               <Bank size={16} />
               <p>CARTÃO DE DÉBITO</p>
             </CheckoutPaymentTypeWrapper>
-            <CheckoutPaymentTypeWrapper type='button' onClick={() => setValue('creditType', 'DINHEIRO')}>
+            <CheckoutPaymentTypeWrapper type='button' className={creditTypeSelected == 'DINHEIRO' ? 'selected' : ''}  onClick={() => setValue('creditType', 'DINHEIRO')}>
               <Money size={16} />
               <p>DINHEIRO</p>
             </CheckoutPaymentTypeWrapper>

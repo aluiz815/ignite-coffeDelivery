@@ -28,7 +28,7 @@ interface OrderProps {
   cep: string
   street: string
   number: string
-  complement:string
+  complement?:string
   bairro: string
   city: string
   uf: string,

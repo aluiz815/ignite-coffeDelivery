@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 
 export const CheckoutWrapper = styled.div`
+
+.selected {
+    background: ${(props) => props.theme['purple-light']};
+    border: 1px solid ${(props) => props.theme['purple']};
+  }
+
+
   margin-top: 2.5rem;
   h1 {
     font-family: 'Baloo 2', sans-serif;
@@ -125,7 +132,7 @@ export const CheckoutPaymentTypeWrapper = styled.button`
   align-items: center;
   padding: 1rem;
   gap: 0.875rem;
-  border: 0;
+  border: 1px solid transparent;
   background: ${(props) => props.theme['base-button']};
   border-radius: 6px;
   cursor: pointer;
@@ -133,6 +140,14 @@ export const CheckoutPaymentTypeWrapper = styled.button`
   svg {
     color: ${(props) => props.theme.purple};
   }
+
+  p{
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-family: 'Roboto';
+    color: ${(props) => props.theme['base-text']};
+    line-height: 1.6;
+  }  
 `
 
 export const CheckoutContainer = styled.form`
@@ -177,6 +192,10 @@ export const CheckoutCardDescription = styled.div`
     font-size: 0.875rem;
     line-height: 1.6;
     cursor: pointer;
+    transition: background 0.2s;
+    &:hover {
+      background: ${(props) => props.theme['yellow-dark']};
+    }
   }
 `
 
