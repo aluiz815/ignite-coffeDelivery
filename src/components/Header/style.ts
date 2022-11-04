@@ -29,6 +29,7 @@ export const LocationContainer = styled.div`
   }
 `
 export const CardContainer = styled.div`
+position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,4 +38,23 @@ export const CardContainer = styled.div`
   border-radius: 6px;
   color: ${(props) => props.theme['yellow-dark']};
   cursor: pointer;
+
+  a { 
+    
+    color:${(props) => props.theme['yellow-dark']};
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: ${(props) => props.theme['yellow-dark']};
+      color: ${(props) => props.theme.white};
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      border: 0;
+    }
+  }
 `

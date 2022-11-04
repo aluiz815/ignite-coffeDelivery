@@ -11,8 +11,13 @@ import {
 
 import HomeCoffee from '../../assets/homeCoffee.svg'
 import { CoffeeCard } from '../../components/CoffeeCard'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartContext'
 
 export const Home = () => {
+
+  const { products } = useContext(CartContext)
+
   return (
     <HomeContainer>
       <HomeHeaderWrapper>
@@ -53,12 +58,11 @@ export const Home = () => {
         <h1>Nossos cafés</h1>
       </HomeBody>
       <CoffeeCardContainer>
-        <CoffeeCard />
-        <CoffeeCard />
-        <CoffeeCard />
-        <CoffeeCard />
-        <CoffeeCard />
-        <CoffeeCard />
+        {products.map(product => {
+          return (
+            <CoffeeCard qty={product.qty} key={product.id} id={product.id} name={product.name} description={product.description} price={product.price} type={product.type} imageUrl={product.imageUrl} />
+          )
+        })}
       </CoffeeCardContainer>
     </HomeContainer>
   )

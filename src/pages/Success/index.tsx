@@ -9,8 +9,13 @@ import {
 
 import SuccessImg from '../../assets/success.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartContext'
 
 export const Success = () => {
+
+  const {order} = useContext(CartContext)
+
   return (
     <SuccessContainer>
       <SuccessContentWrapper>
@@ -23,9 +28,9 @@ export const Success = () => {
             </IconWrapper>
             <SuccessContentDetailsCardContent isBold>
               <p>
-                Entrega em <span>Rua João Daniel Martinelli, 102</span>
+                Entrega em <span>{order.street}, {order.number}</span>
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>{order.city}, {order.uf}</p>
             </SuccessContentDetailsCardContent>
           </SuccessContentDetailsCard>
           <SuccessContentDetailsCard>
@@ -43,7 +48,7 @@ export const Success = () => {
             </IconWrapper>
             <SuccessContentDetailsCardContent isBold>
               <p>Pagamento na entrega</p>
-              <span>Cartão de Crédito</span>
+              <span>{order.creditType}</span>
             </SuccessContentDetailsCardContent>
           </SuccessContentDetailsCard>
         </SuccessContentDetails>

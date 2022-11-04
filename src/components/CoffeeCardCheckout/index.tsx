@@ -8,25 +8,34 @@ import {
   ProductActionButtonRemove,
 } from './style'
 
-import CoffeeImg from '../../assets/Capuccino.svg'
 import { Trash } from 'phosphor-react'
+import { CartContext, ProductProps } from '../../contexts/CartContext'
+import { useContext } from 'react'
 
-export const CoffeeCardCheckout = () => {
+export const CoffeeCardCheckout = ({name,imageUrl,price,type,description,id,qty}:ProductProps) => {
+
+const { removeProductFromCart } = useContext(CartContext)
+
+
+  function handleRemoveProductFromCart() {
+    removeProductFromCart(String(id))
+  }
+
   return (
     <CoffeeCardCheckoutContainer>
       <CoffeeCardCheckoutWrapper>
-        <img src={CoffeeImg} alt="" />
+        <img src={imageUrl} alt="" />
         <CoffeeCardCheckoutDetails>
-          <p>Expresso Tradicional</p>
+          <p>{name}</p>
           <CoffeeCardCheckoutDetailsAction>
-            <ProductActionButton />
-            <ProductActionButtonRemove>
+            <ProductActionButton id={id} qty={qty} />
+            <ProductActionButtonRemove onClick={handleRemoveProductFromCart}>
               <Trash size={16} />
               <span>REMOVER</span>
             </ProductActionButtonRemove>
           </CoffeeCardCheckoutDetailsAction>
         </CoffeeCardCheckoutDetails>
-        <p>R$ 9,90</p>
+        <p>R$ {price}</p>
       </CoffeeCardCheckoutWrapper>
       <Line />
     </CoffeeCardCheckoutContainer>

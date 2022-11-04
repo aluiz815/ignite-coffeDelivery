@@ -5,22 +5,34 @@ import {
   ShoppingCartButton,
 } from './style'
 
-import CoffeeImage from '../../assets/Capuccino.svg'
 import { ShoppingCart } from 'phosphor-react'
 import { ProductActionButton } from '../ProductActionButton'
 
-export const CoffeeCard = () => {
+import {CartContext, ProductProps} from '../../contexts/CartContext'
+import { useContext } from 'react'
+
+export const CoffeeCard = ({name,imageUrl,price,type,description,id,qty}:ProductProps) => {
+
+  const { addProductToCart } = useContext(CartContext)
+
+
+  function handleAddProductToCart() {
+    const products = {name,imageUrl,price,type,description,id,qty}
+    addProductToCart(products)
+  }
+
+
   return (
     <CoffeeCardContainer>
-      <img src={CoffeeImage} alt="" />
+      <img src={imageUrl} alt="" />
       <CoffeeContentWrapper>
-        <p>TRADICIONAL</p>
-        <h3>Expresso Tradicional</h3>
-        <span>O tradicional café feito com água quente e grãos moídos</span>
+        <p>{type}</p>
+        <h3>{name}</h3>
+        <span>{description}</span>
         <CardCoffeeContainer>
-          <span>R$ 9,90</span>
-          <ProductActionButton />
-          <ShoppingCartButton>
+          <span>R$ {price}</span>
+          <ProductActionButton id={id} qty={qty}/>
+          <ShoppingCartButton onClick={handleAddProductToCart}>
             <ShoppingCart size={22} weight="fill" />
           </ShoppingCartButton>
         </CardCoffeeContainer>

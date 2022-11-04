@@ -41,7 +41,7 @@ export const CheckoutFormTitleTexts = styled.div`
     color: ${(props) => props.theme['base-text']};
   }
 `
-export const CheckoutForm = styled.form`
+export const CheckoutForm = styled.div`
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -135,10 +135,14 @@ export const CheckoutPaymentTypeWrapper = styled.button`
   }
 `
 
-export const CheckoutContainer = styled.div`
+export const CheckoutContainer = styled.form`
   display: flex;
   width: 100%;
   gap: 2rem;
+  form {
+    display: flex;
+    gap: 2rem;
+  }
 `
 export const CheckoutCard = styled.div`
   margin-top: 2.5rem;
